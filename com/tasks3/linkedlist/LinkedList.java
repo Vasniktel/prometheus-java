@@ -172,20 +172,44 @@ public class LinkedList<T>
 		return this.size;
 	}
 	
-	@Override
-	public String toString()
+	public int indexOf(T value)
 	{
-		StringBuilder str = new StringBuilder("[ " + this.first.getData());
+		int index = -1;
+		Node<T> elem = this.first;
 		
-		Node<T> elem = this.first.getNext();
-		for (int i = 1; i < this.size; i++)
+		for (int i = 0; i < this.size; i++)
 		{
-			str.append(", " + elem.getData());
+			if (elem.getData().equals(value))
+			{
+				index = i;
+				break;
+			}
+			
 			elem = elem.getNext();
 		}
 		
-		str.append(" ]");
+		return index;
+	}
+	
+	@Override
+	public String toString()
+	{
+		if (this.first != null)
+		{
+			StringBuilder str = new StringBuilder("[ " + this.first.getData());
+			
+			Node<T> elem = this.first.getNext();
+			for (int i = 1; i < this.size; i++)
+			{
+				str.append(", " + elem.getData());
+				elem = elem.getNext();
+			}
+			
+			str.append(" ]");
+			
+			return str.toString();
+		}
 		
-		return str.toString();
+		return "[ ]";
 	}
 }
