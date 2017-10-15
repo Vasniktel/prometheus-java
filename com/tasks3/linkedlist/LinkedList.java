@@ -115,21 +115,25 @@ public class LinkedList<T>
 		return elem.getData();
 	}
 
-	public boolean delete(int index)
+	public T delete(int index)
 	{
 		if (index < 0 || index >= this.size)
 		{
-			return false;
+			return null;
 		}
+		
+		Node<T> removed;
 		
 		if (index == 0)
 		{
 			this.first.getNext().setPrev(null);
+			removed = this.first;
 			this.first = this.first.getNext();
 		}
 		else if (index == this.size - 1)
 		{
 			this.last.getPrev().setNext(null);
+			removed = this.last;
 			this.last = this.last.getPrev();
 		}
 		else
@@ -160,11 +164,12 @@ public class LinkedList<T>
 			
 			elem.getNext().setPrev(elem.getPrev());
 			elem.getPrev().setNext(elem.getNext());
+			removed = elem;
 		}
 		
 		this.size--;
 		
-		return true;
+		return removed.getData();
 	}
 
 	public int size()
