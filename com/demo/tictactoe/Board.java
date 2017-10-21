@@ -7,7 +7,7 @@ public class Board {
 	private ActionFigure[][] board = new ActionFigure[3][3];
 
 	public boolean hasMoreSpace() {
-		return (this.space > 1);
+		return (this.space > 0);
 	}
 	
 	public void put(Move move)
